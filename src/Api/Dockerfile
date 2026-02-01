@@ -21,6 +21,10 @@ COPY ["src/Modules/Orders/Orders.Infrastructure/Orders.Infrastructure.csproj", "
 COPY ["src/Modules/Orders/Orders.Domain/Orders.Domain.csproj", "src/Modules/Orders/Orders.Domain/"]
 COPY ["src/Modules/Orders/Orders.Application/Orders.Application.csproj", "src/Modules/Orders/Orders.Application/"]
 COPY ["src/Modules/Orders/Orders.Contracts/Orders.Contracts.csproj", "src/Modules/Orders/Orders.Contracts/"]
+COPY ["src/Modules/Payments/Payments.Infrastructure/Payments.Infrastructure.csproj", "src/Modules/Payments/Payments.Infrastructure/"]
+COPY ["src/Modules/Payments/Payments.Domain/Payments.Domain.csproj", "src/Modules/Payments/Payments.Domain/"]
+COPY ["src/Modules/Payments/Payments.Application/Payments.Application.csproj", "src/Modules/Payments/Payments.Application/"]
+COPY ["src/Modules/Payments/Payments.Contracts/Payments.Contracts.csproj", "src/Modules/Payments/Payments.Contracts/"]
 RUN dotnet restore "./src/Api/Api.csproj"
 COPY . .
 WORKDIR "/src/src/Api"
