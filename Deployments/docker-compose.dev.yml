@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: src/Api/Api/Dockerfile
+    container_name: modular-platform-api-dev
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+
+      ConnectionStrings__Default:
+        Host=postgres;
+        Port=5432;
+        Database=modular_platform;
+        Username=postgres;
+        Password=postgres;
+
+      RabbitMQ__Host: rabbitmq
+      RabbitMQ__Username: guest
+      RabbitMQ__Password: guest
+
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+      OTEL_SERVICE_NAME: modular-platform-api-dev
+
+    volumes:
+      - ./src:/src
+
+  postgres:
+    ports:
+      - "5432:5432"
+
+  rabbitmq:
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  otel-collector:
+    ports:
+      - "4317:4317"

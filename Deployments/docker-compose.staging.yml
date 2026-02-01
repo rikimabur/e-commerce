@@ -1,0 +1,17 @@
+services:
+  api:
+    image: modular-platform-api:staging
+    container_name: modular-platform-api-staging
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Staging
+
+      ConnectionStrings__Default: ${STAGING_DB_CONNECTION}
+
+      RabbitMQ__Host: rabbitmq
+      RabbitMQ__Username: ${RABBITMQ_USER}
+      RabbitMQ__Password: ${RABBITMQ_PASS}
+
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+      OTEL_SERVICE_NAME: modular-platform-api-staging
